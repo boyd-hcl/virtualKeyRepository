@@ -43,4 +43,20 @@ public class FileList{
         }
         return false;
     }
+
+    public boolean addFile(String filename){
+        File temp = new File(filename);
+        if(temp.exists()){
+            if(!files.toStream().filter(file -> file.getName().equals(filename)).isEmpty()){
+                files.add(fileName);
+            }
+            else{
+                System.out.println("File is already a part of the virtual repository.");
+            }
+        }
+        else{
+            System.out.println("The file name / path you have entered does not exist. \n"
+            +"Please try again and ensure that you have the file name entered correctly.");
+        }
+    }
 }
