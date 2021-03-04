@@ -8,7 +8,7 @@ import java.io.File;
 public class FileList{
     private ArrayList<String> files;
     FileList(){
-        files = new ArrayList<File>();
+        files = new ArrayList<String>();
     }
 
     //searches file by regular expression defined by user
@@ -35,7 +35,7 @@ public class FileList{
     }
 
     public boolean deleteByFileName(String filename){
-        for(File file:files){
+        for(String file:files){
             if(file.getName().equals(filename)){
                 files.remove(file);
                 return true;
@@ -47,8 +47,8 @@ public class FileList{
     public boolean addFile(String filename){
         File temp = new File(filename);
         if(temp.exists()){
-            if(!files.toStream().filter(file -> file.getName().equals(filename)).isEmpty()){
-                files.add(fileName);
+            if(files.toStream().filter(file -> file.getName().equals(filename)).isEmpty()){
+                files.add(filename);
             }
             else{
                 System.out.println("File is already a part of the virtual repository.");

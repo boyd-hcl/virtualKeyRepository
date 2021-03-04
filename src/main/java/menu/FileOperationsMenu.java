@@ -32,6 +32,7 @@ public class FileOperationsMenu implements Menu{
                     case 1:
                     System.out.println("Please enter the name of the file you wish to add to the virtual repository:");
                     String input = sc.nextLine();
+                    
                     successful = true;
                     break;
                     case 2:
