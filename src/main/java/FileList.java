@@ -7,10 +7,7 @@ import java.io.File;
 
 public class FileList{
     private ArrayList<String> files;
-    public static FileList getFileList(){
-        return FileList();
-    }
-    private FileList(){
+    FileList(){
         files = new ArrayList<File>();
     }
 
