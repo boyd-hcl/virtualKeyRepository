@@ -1,4 +1,4 @@
-package java;
+package VirtualKeyRepository;
 
 public class VirtualKeyRepository extends FileList{
     private static VirtualKeyRepository vkr;

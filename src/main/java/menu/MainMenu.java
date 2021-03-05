@@ -1,6 +1,9 @@
 package menu;
 
-public class MainMenu implements Menu{
+import java.util.Scanner;
+import VirtualKeyRepository.VirtualKeyRepository;
+
+public class MainMenu{
 
     private static void displayMenuOptions(){
         System.out.println("Main Menu\n"
@@ -9,23 +12,37 @@ public class MainMenu implements Menu{
         +"(2) Edit/search tracked file list\n"
         +"(3) Exit the application\n");
     }
-    public static void menuLoop(int input){
+    public static void menuLoop(){
         while(true){
             displayMenuOptions();
-            boolean successful;  
-            Scanner sc = new Scanner()  
-            try{
-                int choice = sc.nextInt();
-                switch(choice){
-                    case 1:
-                    break;
-                    case 2:
-                    break;:
-                    case 3:
+            boolean successful = false;  
+            Scanner sc = new Scanner(System.in);
+            while(!successful){
+                try{
+                    int choice = sc.nextInt();
+                    switch(choice){
+                        case 1:
+                        System.out.println("Printing list of files in the virtual repository...");
+                        VirtualKeyRepository.getVirtualKeyRepository().printAll();
+                        System.out.println("List printed");
+                        break;
+                        case 2:
+                        System.out.println("Entering repository operations menu");
+                        sc.close();
+                        FileOperationsMenu.menuLoop();
+                        sc = new Scanner(System.in);
+                        System.out.println("Returned to main context successfully");
+                        break;
+                        case 3:
+                        sc.close();
+                        return;
+                        default:
+                        System.out.println("Please input a number corresponding to one of the listed actions.");
+                    }
                 }
-            }
-            catch(InputMismatchException e){
-                System.out.println("Please input the single digit corresponding with your desired action");
+                catch(Exception e){
+                    System.out.println("Please input the single digit corresponding with your desired action");
+                }
             }
     
         }
