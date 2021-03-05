@@ -32,7 +32,7 @@ public class FileList{
 
     public boolean deleteByFileName(String filename){
         for(String file:files){
-            if(equals(filename)){
+            if(file.equals(filename)){
                 files.remove(file);
                 return true;
             }
