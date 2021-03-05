@@ -5,15 +5,19 @@ import java.util.regex.Pattern;
 import java.io.File;
 
 public class FileList{
+
+    //Tracks list of files
     private ArrayList<String> files;
     FileList(){
         files = new ArrayList<String>();
     }
 
     //searches file by regular expression defined by user
-    //This will allow the user to request partial matches as well as 
+    //This will allow the user to request partial matches 
+    //as well as more complex expressions for advanced users
     public void searchFileByName(String regex){
 
+        
         System.out.println("Here is a list of files that match your search. If no files appear, none matched your search:");
         try{
             Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
@@ -25,11 +29,13 @@ public class FileList{
         }
     }
 
+    //Sorts list of files and prints
     public void printAll(){
         files.sort((string1, string2) -> string1.compareTo(string2));
         files.stream().forEach(System.out::println);
     }
 
+    //Deletes file if present and returns a boolean based on the success of the operation
     public boolean deleteByFileName(String filename){
         for(String file:files){
             if(file.equals(filename)){
@@ -40,6 +46,8 @@ public class FileList{
         return false;
     }
 
+    //Adds file to file list
+    //Prints error message if unsuccessful
     public boolean addFile(String filename){
         File temp = new File(filename);
         if(temp.exists()){
@@ -48,7 +56,7 @@ public class FileList{
                 return true;
             }
             else{
-                System.out.println("File is already a part of the virtual repository.");
+                System.out.println("\nFile is already a part of the virtual repository.");
             }
         }
         else{
