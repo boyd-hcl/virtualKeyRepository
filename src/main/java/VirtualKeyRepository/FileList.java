@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.io.File;
 
+//Tracks list of files and allows adding, deleting, searching and printing all file names
 public class FileList{
 
     //Tracks list of files
